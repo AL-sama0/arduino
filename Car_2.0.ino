@@ -98,20 +98,20 @@ void loop() {
   x2 = analogRead(joy2X);
   y2 = analogRead(joy2Y);
 
-  int speed_1  = speed_y1 + speed_x1;
-  int speed_2  = speed_y1 - speed_x1;
-
   int speed_y1 = map(y1, min, max, -200, 200);
   int speed_x1 = map(x1, min, max, -200, 200);
   int speed_x2 = map(x2, min, max, -200, 200);
+
+  int speed_1  = speed_y1 + speed_x1;
+  int speed_2  = speed_y1 - speed_x1;
 
   int speed_RF = speed_2 - speed_x2;
   int speed_RR = speed_1 - speed_x2;
   int speed_LF = speed_1 + speed_x2;
   int speed_LR = speed_2 + speed_x2;
 
-  controlRF(1, 0, speed_RF);
-  controlRR(1, 0, speed_RR);
-  controlLF(1, 0, speed_LF);
-  controlLR(1, 0, speed_LR);
+  controlRF(1, 0, constrain(speed_RF, -200, 200));
+  controlRR(1, 0, constrain(speed_RR, -200, 200));
+  controlLF(1, 0, constrain(speed_LF, -200, 200));
+  controlLR(1, 0, constrain(speed_LR, -200, 200));
 }
