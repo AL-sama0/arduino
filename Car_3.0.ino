@@ -67,7 +67,6 @@ void setup(){
 }
 
 void loop(){
-    
   x1 = analogRead(joy1X);
   y1 = analogRead(joy1Y);
   x2 = analogRead(joy2X);
