@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino</title>
+    <link rel="icon" href="arduino-folder.png" type="image/png"> <!-- 添加网站图标 -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #54a571 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: #54a571;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .content {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+        }
+        .content h2 {
+            color: #333;
+        }
+        .content p {
+            line-height: 1.6;
+        }
+        .content h2.cn {
+            font-weight: bold; /* 设置中文标题为粗体 */
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Arduino</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="#" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#" onclick="showSection('about')">About</a></li>
+                    <li><a href="#" onclick="showSection('download')">Download</a></li>
+                    <li><a href="#" onclick="showSection('contact')">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <div id="home" class="section">
+                <h2>Home</h2>
+                <p>这个网站是由ALsama编写的，这里有很多优质的Arduino程序。</p>
+                <p>This website is created by ALsama, featuring many high-quality Arduino programs.</p>
+            </div>
+            <div id="about" class="section hidden">
+                <h2>About</h2>
+                <p>Arduino是一种开源电子原型平台，基于简单易用的硬件和软件，旨在让用户能够轻松地创建互动项目。它的设计理念是通过提供一个易于使用的环境，使新手和经验丰富的开发者都能快速上手。Arduino的核心是一个可编程的微控制器，用户可以通过编写代码来控制各种电子元件，如传感器、马达和灯光。</p>
+                <p>Arduino不仅适用于教育和学习，也广泛应用于各种创意项目和原型开发。许多爱好者和开发者利用Arduino进行物联网（IoT）设备的开发，创建智能家居系统、环境监测设备和机器人等。其强大的功能和灵活性使得Arduino在全球范围内赢得了广泛的支持和关注。</p>
+                <p>Arduino社区提供了丰富的资源，包括库、示例代码和教程，使得学习和开发变得更加容易。无论您是想学习编程、电子学，还是想实现一个创意项目，Arduino都能为您提供强大的支持。通过Arduino，您可以将想法变为现实，探索无穷的可能性，创造出既有趣又实用的项目。</p>
+                <p>Arduino is an open-source electronics prototyping platform based on easy-to-use hardware and software, designed to help users easily create interactive projects. Its design philosophy provides an accessible environment that allows both beginners and experienced developers to quickly get started. At its core, Arduino is a programmable microcontroller that users can code to control various electronic components like sensors, motors, and lights.</p>
+                <p>Arduino is not only suitable for education and learning but is also widely used in various creative projects and prototyping. Many hobbyists and developers utilize Arduino for Internet of Things (IoT) device development, creating smart home systems, environmental monitoring devices, and robots. Its powerful capabilities and flexibility have garnered widespread support and attention globally.</p>
+                <p>The Arduino community offers a wealth of resources, including libraries, example codes, and tutorials, making learning and development much easier. Whether you want to learn programming, electronics, or bring a creative project to life, Arduino provides robust support. With Arduino, you can turn your ideas into reality, explore endless possibilities, and create projects that are both fun and practical.</p>
+            </div>
+            <div id="download" class="section hidden">
+                <h2>Download</h2>
+                <p>Here you can find the latest Arduino software and libraries.</p>
+            </div>
+            <div id="contact" class="section hidden">
+                <h2>Contact</h2>
+                <p>如要联系作者，请发电邮至ohyaustin192202@gmail.com</p>
+                <p>To contact the author, please email ohyaustin192202@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+            // 更新当前链接
+            const links = document.querySelectorAll('nav a');
+            links.forEach(link => {
+                link.parentElement.classList.remove('current');
+                if (link.textContent.toLowerCase() === sectionId) {
+                    link.parentElement.classList.add('current');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
