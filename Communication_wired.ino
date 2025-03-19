@@ -1,8 +1,5 @@
 #include <SoftwareSerial.h>
-String sd;
-String rm;
 SoftwareSerial Serial1(2,3);
-
 
 void setup(){
   Serial.begin(9600);
@@ -11,13 +8,11 @@ void setup(){
 
 void loop(){
   while(Serial.available()){
-      Serial1.write(Serial.read());
-      
+    Serial1.write(Serial.read()); 
   }
-
   
   while(Serial1.available()){
-      char a = Serial1.read();
-      Serial.print(a);
+    char a = Serial1.read();
+    Serial.print(a);
   }
 }
