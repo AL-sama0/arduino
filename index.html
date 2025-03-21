@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arduino</title>
-    <link rel="icon" href="arduino-folder.png" type="image/png"> <!-- 添加网站图标 -->
+    <link rel="icon" href="arduino-folder.png" type="image/png"> <!-- 网站图标 -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -66,12 +66,48 @@
         }
         .content p {
             line-height: 1.6;
+            color: #555; /* 设置段落文本颜色 */
         }
         .content h2.cn {
             font-weight: bold; /* 设置中文标题为粗体 */
         }
         .hidden {
             display: none;
+        }
+        .toggle-content {
+            margin: 10px 0;
+            cursor: pointer;
+            color: #007B5F; /* 大种类字体颜色 */
+            font-size: 20px; /* 大种类字体大小 */
+            font-weight: bold; /* 大种类字体加粗 */
+            display: flex;
+            align-items: center; /* 垂直居中对齐 */
+        }
+        .toggle-content:hover {
+            text-decoration: underline; /* 鼠标悬停时显示下划线 */
+        }
+        .toggle-icon {
+            margin-left: 8px; /* 图标与文本之间的间隔 */
+            font-size: 14px; /* 调小箭头的大小 */
+            color: #ccc; /* 改为淡灰色 */
+            transition: transform 0.3s; /* 动画效果 */
+        }
+        .download-list {
+            margin-left: 20px;
+            display: none;
+        }
+        .download-list .toggle-content {
+            font-size: 18px; /* 子类别字体大小 */
+            font-weight: normal; /* 子类别字体正常 */
+            color: #005F4B; /* 子类别字体颜色 */
+        }
+        .download-list .toggle-content:hover {
+            text-decoration: underline; /* 鼠标悬停时显示下划线 */
+        }
+        .download-list p {
+            font-size: 16px; /* 文件下载链接字体大小 */
+            margin: 5px 0; /* 文件下载链接上下间距 */
+            color: #007B5F; /* 下载链接颜色 */
         }
     </style>
 </head>
@@ -110,7 +146,41 @@
             </div>
             <div id="download" class="section hidden">
                 <h2>Download</h2>
-                <p>Here you can find the latest Arduino software and libraries.</p>
+                <div class="toggle-content" onclick="toggleList('code-list')">
+                    Code
+                    <span class="toggle-icon">▶</span>
+                </div>
+                <div id="code-list" class="download-list">
+                    <div class="toggle-content" onclick="toggleList('car-list')">
+                        Car
+                        <span class="toggle-icon">▶</span>
+                    </div>
+                    <div id="car-list" class="download-list">
+                        <p><a href="Car_1.0.ino" download>Car 1.0</a></p>
+                        <p><a href="Car_2.0.ino" download>Car 2.0</a></p>
+                        <p><a href="Car_2.5.ino" download>Car 2.5</a></p>
+                        <p><a href="Car_PID.ino" download>Car PID</a></p>
+                    </div>
+                    <div class="toggle-content" onclick="toggleList('communication-list')">
+                        Communication
+                        <span class="toggle-icon">▶</span>
+                    </div>
+                    <div id="communication-list" class="download-list">
+                        <p><a href="Communication_wired.ino" download>Communication Wired</a></p>
+                        <p><a href="Communication_wired_improved.ino" download>Communication Wired Improved</a></p>
+                        <p><a href="Communication_wired_LED.ino" download>Communication Wired LED</a></p>
+                        <p><a href="WLC.ino" download>Wireless Communication</a></p>
+                    </div>
+                    <div class="toggle-content" onclick="toggleList('other-list')">
+                        Other
+                        <span class="toggle-icon">▶</span>
+                    </div>
+                    <div id="other-list" class="download-list">
+                        <p><a href="LED_Button_NoMoreDelay.ino" download>LED (Button + No More Delay)</a></p>
+                        <p><a href="Motor.ino" download>Motor</a></p>
+                        <p><a href="Servo.ino" download>Servo</a></p>
+                    </div>
+                </div>
             </div>
             <div id="contact" class="section hidden">
                 <h2>Contact</h2>
@@ -138,6 +208,18 @@
                     link.parentElement.classList.add('current');
                 }
             });
+        }
+
+        function toggleList(listId) {
+            const list = document.getElementById(listId);
+            const icon = list.previousElementSibling.querySelector('.toggle-icon');
+            if (list.style.display === "none" || list.style.display === "") {
+                list.style.display = "block";
+                icon.textContent = "▲"; // 展开状态下的图标
+            } else {
+                list.style.display = "none";
+                icon.textContent = "▶"; // 收起状态下的图标
+            }
         }
     </script>
 </body>
