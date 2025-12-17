@@ -52,7 +52,7 @@ void sendSpeedDataToSlave(int data)
     Serial3.write(0);
     int body = ceil(data);
         
-    Serial3.write((body * -1));
+    Serial3.write(abs(body))
   }
   if (data == 0)
   {
@@ -146,8 +146,8 @@ void loop() {
   sendSpeedDataToSlave(speed_LF);
   sendSpeedDataToSlave(speed_LR);
 
-  int verify = (abs(speed_RF) + abs(speed_RR) + abs(speed_LF) + abs(speed_LR)) / 4;
-  Serial3.write(verify);
+  // int verify = (abs(speed_RF) + abs(speed_RR) + abs(speed_LF) + abs(speed_LR)) / 4;
+  // Serial3.write(verify);
 
   sendBigDataToSlave(trigger1);
   sendBigDataToSlave(trigger2);
@@ -160,7 +160,7 @@ void loop() {
   Serial3.write(odd_verify);
 
   Serial.print(" Verify code: ");
-  Serial.print(even_verify);
+  Serial.print(even_verify);·
   Serial.print(" ");
   Serial.print(odd_verify);
   Serial.println();
